@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login Administrador - Sistema de Tickets</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      /*background-image: url("@{/img/cliente.jpg}");*/
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: blueviolet;
+    }
+
+    .login-box {
+      background: red;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+      width: 100%;
+      max-width: 400px;
+      color: white;
+      
+    }
+
+    .login-box h2 {
+      margin-bottom: 20px;
+      font-weight: bold;
+      text-align: center;
+      
+    }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <h2>Sistema de Tickets Administrador</h2>
+    <form th:action="@{/admin/login}" method="post">
+      <div class="mb-3">
+        <label for="username" class="form-label">Usuario</label>
+        <input type="text" class="form-control" id="username" name="username" required>
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Contraseña</label>
+        <input type="password" class="form-control" id="password" name="password" required>
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Iniciar Sesión</button>
+    </form>
+  </div>
+</body>
+</html>
