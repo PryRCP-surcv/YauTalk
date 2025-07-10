@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Crear Ticket</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body{
+      background:red;
+  
+  }
+  </style>
+</head>
+<body>
+    <div class="d-flex justify-content-end mb-3">
+        <a href="home.html" class="btn btn-primary">
+          ← Volver al Home
+        </a>
+      </div>
+      
+  <div class="container my-4">
+    <h2 class="mb-3">Crear Ticket</h2>
+    <form class="row g-3">
+      <div class="col-md-6">
+        <label class="form-label">Empresa</label>
+        <input type="text" class="form-control" placeholder="Ej:indra.sac">
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Asunto</label>
+        <input type="text" class="form-control" placeholder="Ej: Error en login">
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Prioridad</label>
+        <select class="form-select">
+          <option selected disabled>Seleccionar prioridad...</option>
+          <option>Alta</option>
+          <option>Media</option>
+          <option>Baja</option>
+        </select>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Correo Electronico</label>
+        <input type="text" class="form-control" placeholder="Ej:@gmail.com">
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Numero de Contacto</label>
+        <input type="text" class="form-control" placeholder="Ej:963582368">
+      </div>
+      <div class="col-12">
+        <label class="form-label">Descripción</label>
+        <textarea class="form-control" rows="4" placeholder="Describe el problema..."></textarea>
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">Crear Ticket</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

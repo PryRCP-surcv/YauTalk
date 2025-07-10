@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tickets Abiertos</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body{
+        background:red;
+
+    }
+  </style>
+</head>
+<body>
+    <div class="d-flex justify-content-end mb-3">
+        <a href="home.html" class="btn btn-primary">
+          ← Volver al Home
+        </a>
+      </div>
+  <div class="container my-4">
+    <h2 class="mb-3">Tickets Abiertos</h2>
+    <div class="row mb-4">
+      <div class="col-md-6">
+        <canvas id="chartAbiertos"></canvas>
+      </div>
+    </div>
+    <table class="table table-striped table-bordered">
+      <thead class="table-light">
+        <tr>
+          <th>ID</th><th>Empresa</th><th>Contacto</th><th>Asunto</th><th>Prioridad</th><th>Fecha de Creación</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Error login</td><td><span class="badge bg-danger">Alta</span></td><td>10/07/2025</td></tr>
+        <tr><td>2</td><td>Problema BD</td><td><span class="badge bg-warning text-dark">Media</span></td><td>09/07/2025</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <script>
+    new Chart(document.getElementById('chartAbiertos'), {
+      type: 'doughnut',
+      data: {
+        labels: ['Alta', 'Media', 'Baja'],
+        datasets: [{ data: [5,3,2], backgroundColor: ['#dc3545','#ffc107','#198754'] }]
+      },
+      options: { responsive:true }
+    });
+  </script>
+</body>
+</html>
+
+  

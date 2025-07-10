@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Home Administrador - Sistema de Tickets</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+    background: url('https://www.paradavisual.com/wp-content/uploads/2024/05/a-futuristic-call-center-scene-capturing-the-techn-oLh0GRG-Rki0_xlHlHlDBw-AEvvhvX0QIOAOiQByd3YuA.jpeg') no-repeat center center fixed;
+    background-size: cover;
+  }
+    .card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: rgba(255, 255, 255, 0.85); /* Fondo semi-transparente para que el texto sea legible */
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    }
+    h1{
+        color: white;
+    }
+  </style>
+  
+</head>
+<body>
+    <div class="d-flex justify-content-end mb-3">
+        <a href="Administrador-Login.html" class="btn btn-primary">
+          ← Salir
+        </a>
+      </div> 
+  <div class="container py-5">
+    <h1 class="mb-4 text-center">Panel de Administrador</h1>
+    <div class="row g-4">
+
+      <!-- Crear Ticket -->
+      <div class="col-md-4 col-lg-3">
+        <a href="crear-ticket.html" class="text-decoration-none">
+          <div class="card text-center">
+            <div class="card-body">
+              <h5 class="card-title">Crear Ticket</h5>
+              <p class="card-text">Registra un nuevo ticket en el sistema.</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Crear Usuario -->
+      <div class="col-md-4 col-lg-3">
+        <a href="crear-usuario.html" class="text-decoration-none">
+          <div class="card text-center">
+            <div class="card-body">
+              <h5 class="card-title">Crear Usuario</h5>
+              <p class="card-text">Añade nuevos usuarios con distintos roles.</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Asignar Ticket -->
+      <div class="col-md-4 col-lg-3">
+        <a href="asignar-ticket.html" class="text-decoration-none">
+          <div class="card text-center">
+            <div class="card-body">
+              <h5 class="card-title">Asignar Ticket</h5>
+              <p class="card-text">Asigna tickets a los agentes de soporte.</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Total de Tickets -->
+      <div class="col-md-4 col-lg-3">
+        <a href="total-tickets.html" class="text-decoration-none">
+          <div class="card text-center">
+            <div class="card-body">
+              <h5 class="card-title">Total de Tickets</h5>
+              <p class="card-text">Visualiza estadísticas y listado de tickets.</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Tickets Abiertos -->
+      <div class="col-md-4 col-lg-3">
+        <a href="tickets-abiertos.html" class="text-decoration-none">
+          <div class="card text-center">
+            <div class="card-body">
+              <h5 class="card-title">Tickets Abiertos</h5>
+              <p class="card-text">Revisa los tickets que están en proceso.</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Tickets Cerrados -->
+      <div class="col-md-4 col-lg-3">
+        <a href="tickets-cerrados.html" class="text-decoration-none">
+          <div class="card text-center">
+            <div class="card-body">
+              <h5 class="card-title">Tickets Cerrados</h5>
+              <p class="card-text">Consulta el historial de tickets resueltos.</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Crear Usuario</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body{
+      background:red;
+  
+  }
+  </style>
+</head>
+<body>
+    <div class="d-flex justify-content-end mb-3">
+        <a href="home.html" class="btn btn-primary">
+          ← Volver al Home
+        </a>
+      </div>
+  <div class="container my-4">
+    <h2 class="mb-3">Crear Usuario</h2>
+    <form class="row g-3">
+      <div class="col-md-6">
+        <label class="form-label">Nombre Completo</label>
+        <input type="text" class="form-control" placeholder="Ej: Juan Pérez">
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Correo Electrónico</label>
+        <input type="email" class="form-control" placeholder="Ej: juan@correo.com">
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Numero de Celular</label>
+        <input type="email" class="form-control" placeholder="Ej: 963586238">
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Rol</label>
+        <select class="form-select">
+          <option selected disabled>Seleccionar rol...</option>
+          <option>Administrador</option>
+          <option>Soporte</option>
+          <option>Cliente</option>
+        </select>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Contraseña</label>
+        <input type="password" class="form-control">
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">Crear Usuario</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
