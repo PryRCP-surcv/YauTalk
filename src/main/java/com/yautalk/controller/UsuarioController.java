@@ -28,4 +28,10 @@ public class UsuarioController {
     public List<Usuario> obtenerUsuarios() {
         return usuarioService.listarUsuarios();
     }
+
+    @GetMapping("/test")
+    public String test() {
+        return "El backend responde correctamente.";
+    }
+
 }
