@@ -39,7 +39,7 @@ public class Usuario {
 
     // Métodos de ayuda
     public boolean esAdmin() {
-        return rol != null && "admin".equalsIgnoreCase(rol.getNombreRol());
+        return rol != null && "administrador".equalsIgnoreCase(rol.getNombreRol());
     }
 
     public boolean esTecnico() {
