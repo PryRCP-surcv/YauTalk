@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Ticket - YauTalk</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body style="background-color: #f5f7fa;">
+
+    <div class="container mt-5">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">Crear nuevo ticket de soporte</h4>
+            </div>
+            <div class="card-body">
+                <form th:action="@{/cliente/crear-ticket}" th:object="${ticket}" method="post"
+                    enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="titulo" class="form-label">Título del problema</label>
+                        <input type="text" th:field="*{titulo}" class="form-control" id="titulo" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="descripcion" class="form-label">Descripción</label>
+                        <textarea th:field="*{descripcion}" class="form-control" id="descripcion" rows="4"
+                            required></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="categoria" class="form-label">Categoría</label>
+                        <select th:field="*{categoria}" class="form-select" id="categoria" required>
+                            <option value="" disabled selected>Seleccione una categoría</option>
+                            <option value="Redes">Redes</option>
+                            <option value="Hardware">Hardware</option>
+                            <option value="Software">Software</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="prioridad" class="form-label">Prioridad</label>
+                        <select th:field="*{prioridad}" class="form-select" id="prioridad" required>
+                            <option value="" disabled selected>Seleccione la prioridad</option>
+                            <option value="Alta">Alta</option>
+                            <option value="Media">Media</option>
+                            <option value="Baja">Baja</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="archivo" class="form-label">Adjuntar archivo (opcional)</label>
+                        <input type="file" name="archivo" class="form-control" id="archivo"
+                            accept=".png,.jpg,.jpeg,.pdf,.docx,.txt">
+                    </div>
+
+                    <button type="submit" class="btn btn-success">Enviar ticket</button>
+                    <a th:href="@{/cliente/inicio}" class="btn btn-secondary ms-2">Cancelar</a>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

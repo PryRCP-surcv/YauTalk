@@ -10,36 +10,42 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+import com.yautalk.security.UserDetailsServiceImpl;
+
 @Configuration
 public class SecurityConfig {
 
     @Autowired
     private CustomSuccessHandler customSuccessHandler;
 
+    @Autowired
+    private UserDetailsServiceImpl userDetailsService;
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            .csrf(csrf -> csrf.disable())
-            .authorizeHttpRequests(auth -> auth
+                .csrf(csrf -> csrf.disable())
+                .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/", "/login", "/registro", "/css/**", "/js/**").permitAll()
                 .requestMatchers("/api/usuarios/test").permitAll()
                 .requestMatchers("/admin/**").hasRole("ADMINISTRADOR")
                 .requestMatchers("/tecnico/**").hasRole("TECNICO")
                 .requestMatchers("/cliente/**").hasRole("CLIENTE")
                 .anyRequest().authenticated()
-            )
-            .formLogin(form -> form
+                )
+                .formLogin(form -> form
                 .loginPage("/login")
                 .successHandler(customSuccessHandler) //ruta dinamica
                 .permitAll()
-            )
-            .logout(logout -> logout
+                )
+                .logout(logout -> logout
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/login?logout")
                 .permitAll()
-            );
+                );
 
-        return http.build();
+        return http.userDetailsService(userDetailsService).build();
+
     }
 
     @Bean
@@ -48,7 +54,6 @@ public class SecurityConfig {
     }
 
     // Solución correcta y funcional para AuthenticationManager
-
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig) throws Exception {
         return authConfig.getAuthenticationManager();

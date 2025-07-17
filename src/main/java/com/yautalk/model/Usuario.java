@@ -1,5 +1,11 @@
 package com.yautalk.model;
 
+import java.util.Collection;
+import java.util.Collections;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,7 +15,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
-public class Usuario {
+public class Usuario implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -50,7 +56,39 @@ public class Usuario {
         return rol != null && "cliente".equalsIgnoreCase(rol.getNombreRol());
     }
 
-    // Getters y Setters
+    // ==== MÉTODOS de UserDetails ====
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return Collections.singleton(() -> "ROLE_" + rol.getNombreRol().toUpperCase());
+    }
+
+    @Override
+    public String getUsername() {
+        return correo; // o puedes usar nombreUsuario si prefieres
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
+    // ==== GETTERS y SETTERS ====
 
     public Long getIdUsuario() {
         return idUsuario;
@@ -84,20 +122,21 @@ public class Usuario {
         this.nombreUsuario = nombreUsuario;
     }
 
-    public String getCorreo() {
-        return correo;
-    }
-
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
-
+    @Override
     public String getPassword() {
         return password;
     }
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 
     public String getTelefono1() {
@@ -131,8 +170,4 @@ public class Usuario {
     public void setRol(Rol rol) {
         this.rol = rol;
     }
-
-
-
 }
-

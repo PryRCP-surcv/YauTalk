@@ -1,12 +1,114 @@
-<!-- cliente-inicio.html -->
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Inicio Cliente</title>
+    <title>Panel Cliente - YauTalk</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            background-color: #f5f7fa;
+        }
+
+        .dashboard {
+            display: flex;
+            height: 100vh;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #0b2e74;
+            color: white;
+            padding: 20px 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .sidebar img {
+            width: 90px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+
+        .sidebar h5, .sidebar p {
+            text-align: center;
+            margin: 5px 0;
+        }
+
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            margin: 15px 0;
+            padding: 10px;
+            border-radius: 8px;
+            width: 100%;
+            text-align: left;
+        }
+
+        .sidebar a:hover {
+            background-color: #1946a2;
+        }
+
+        .content-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .main-content {
+            padding: 40px;
+            flex-grow: 1;
+        }
+
+        .main-content h3 {
+            font-weight: bold;
+        }
+
+        .main-content p {
+            margin-bottom: 30px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            font-size: 14px;
+            background-color: #f5f5f5;
+            color: #555;
+        }
+    </style>
 </head>
 <body>
-    <h2>Bienvenido, cliente de YauTalk</h2>
-    <p>Aquí podrás crear y revisar tus tickets de soporte.</p>
+<div class="dashboard">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Perfil">
+        <h5 th:text="${usuario.nombre} + ' ' + ${usuario.apellido}">Nombre Apellido</h5>
+        <p th:text="${usuario.correo}">correo@ejemplo.com</p>
+
+        <a href="/cliente/inicio"><i class="fas fa-home me-2"></i>Inicio</a>
+        <a href="/cliente/crear-ticket"><i class="fas fa-plus me-2"></i>Crear ticket</a>
+        <a href="/cliente/mis-tickets"><i class="fas fa-folder-open me-2"></i>Mis tickets</a>
+        <a href="/logout"><i class="fas fa-sign-out-alt me-2"></i>Cerrar sesión</a>
+    </div>
+
+    <!-- Contenido + Footer en columna -->
+    <div class="content-area">
+        <!-- Main Content -->
+        <div class="main-content">
+            <h3>Bienvenido, <span th:text="${usuario.nombre}">Nombre</span></h3>
+            <p>Desde aquí puedes gestionar tus tickets de soporte técnico. Usa el menú lateral para crear un nuevo ticket o consultar los que ya has enviado.</p>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            © 2025 YauTalk - Sistema de Tickets de Soporte Técnico
+        </footer>
+    </div>
+</div>
 </body>
 </html>
