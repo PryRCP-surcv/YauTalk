@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.yautalk.model.Ticket;
 import com.yautalk.model.Usuario;
@@ -40,7 +41,8 @@ public class TicketController {
 
     @PostMapping("/crear-ticket")
     public String procesarFormularioTicket(@ModelAttribute("ticket") Ticket ticket,
-            @RequestParam("archivo") MultipartFile archivo) {
+            @RequestParam("archivo") MultipartFile archivo,
+            RedirectAttributes redirectAttributes) {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         Usuario usuario = (Usuario) auth.getPrincipal();
@@ -75,6 +77,7 @@ public class TicketController {
         logger.info("Cliente ID: " + ticket.getCliente().getIdUsuario());
 
         ticketService.guardarTicket(ticket);
+        redirectAttributes.addFlashAttribute("mensaje", "Ticket creado exitosamente.");
 
         return "redirect:/cliente/mis-tickets";
     }
