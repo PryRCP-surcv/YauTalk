@@ -39,6 +39,11 @@ public class Ticket {
     @JoinColumn(name = "cliente_id")
     private Usuario cliente;
 
+    @ManyToOne
+    @JoinColumn(name = "tecnico_id")
+    private Usuario tecnico;
+
+
     // Getters y Setters
 
     public Long getId() {
@@ -112,6 +117,14 @@ public class Ticket {
     public void setCliente(Usuario cliente) {
         this.cliente = cliente;
     }
+
+    public Usuario getTecnico() {
+    return tecnico;
+}
+
+    public void setTecnico(Usuario tecnico) {
+    this.tecnico = tecnico;
+}
 
 
 

@@ -41,4 +41,10 @@ public class TicketServiceImpl implements TicketService {
         return ticketRepository.findById(id).orElse(null);
     }
 
+    @Override
+    public List<Ticket> obtenerTicketsPorTecnico(Usuario tecnico) {
+    return ticketRepository.findByTecnico(tecnico);
+}
+
+
 }

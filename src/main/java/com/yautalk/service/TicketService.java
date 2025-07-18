@@ -14,6 +14,12 @@ public interface TicketService {
 
     Ticket obtenerTicketPorId(Long id);// obtener por id de ticket
 
+    List<Ticket> obtenerTicketsPorTecnico(Usuario tecnico);
+
+
+
+    
+
 
 
 }

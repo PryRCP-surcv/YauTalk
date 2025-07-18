@@ -12,5 +12,7 @@ public interface TicketRepository extends JpaRepository<Ticket, Long> {
 
     List<Ticket> findByEstado(String estado);
 
-    // Puedes agregar métodos personalizados más adelante si es necesario
+    List<Ticket> findByTecnico(Usuario tecnico);
+
+
 }
