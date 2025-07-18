@@ -12,5 +12,8 @@ public interface TicketService {
 
     List<Ticket> obtenerTicketsPendientes(); // Método nuevo
 
+    Ticket obtenerTicketPorId(Long id);// obtener por id de ticket
+
+
 
 }

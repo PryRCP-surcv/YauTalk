@@ -36,4 +36,9 @@ public class TicketServiceImpl implements TicketService {
         return ticketRepository.findByEstado("Pendiente"); // o el estado que decidas
     }
 
+    @Override
+    public Ticket obtenerTicketPorId(Long id) {
+        return ticketRepository.findById(id).orElse(null);
+    }
+
 }

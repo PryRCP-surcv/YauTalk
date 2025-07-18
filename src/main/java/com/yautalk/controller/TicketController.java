@@ -28,10 +28,10 @@ import com.yautalk.service.TicketService;
 @RequestMapping("/cliente")
 public class TicketController {
 
-    private static final Logger logger = LoggerFactory.getLogger(TicketController.class);
-
     @Autowired
     private TicketService ticketService;
+
+    private static final Logger logger = LoggerFactory.getLogger(TicketController.class);
 
     @GetMapping("/crear-ticket")
     public String mostrarFormularioCrearTicket(Model model) {
@@ -51,19 +51,19 @@ public class TicketController {
         ticket.setFechaCreacion(LocalDate.now());
         ticket.setEstado("Pendiente");
 
-        // Convertimos cadena vacía en null para categoría y prioridad si es necesario
         if (ticket.getCategoria() != null && ticket.getCategoria().isBlank()) {
             ticket.setCategoria(null);
         }
+
         if (ticket.getPrioridad() != null && ticket.getPrioridad().isBlank()) {
             ticket.setPrioridad(null);
         }
 
-        // Guardar archivo en carpeta 'uploads' fuera de /static
+        // Guardar archivo en carpeta local "uploads"
         if (!archivo.isEmpty()) {
             try {
                 String nombreArchivo = archivo.getOriginalFilename();
-                String rutaDirectorio = new File("uploads").getAbsolutePath(); // ✅ Carpeta raíz
+                String rutaDirectorio = new File("uploads").getAbsolutePath();
                 File directorio = new File(rutaDirectorio);
                 if (!directorio.exists()) {
                     directorio.mkdirs();
@@ -77,7 +77,6 @@ public class TicketController {
             }
         }
 
-        // Log de depuración
         logger.info("DATOS DEL TICKET >>>");
         logger.info("Título: " + ticket.getTitulo());
         logger.info("Descripción: " + ticket.getDescripcion());
