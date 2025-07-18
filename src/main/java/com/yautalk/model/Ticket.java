@@ -22,12 +22,15 @@ public class Ticket {
     @Column(length = 1000)
     private String descripcion;
 
+    @Column(nullable = true)
     private String categoria;
 
+    @Column(nullable = true)
     private String prioridad;
 
     private LocalDate fechaCreacion;
 
+    @Column(nullable = false)
     private String estado; // Ej: Pendiente, En Proceso, Resuelto, etc.
 
     private String nombreArchivoAdjunto; // Se guarda el nombre o ruta del archivo si se adjunta

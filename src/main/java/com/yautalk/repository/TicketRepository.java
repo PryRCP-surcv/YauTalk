@@ -10,5 +10,7 @@ import com.yautalk.model.Usuario;
 public interface TicketRepository extends JpaRepository<Ticket, Long> {
     List<Ticket> findByCliente(Usuario cliente);
 
+    List<Ticket> findByEstado(String estado);
+
     // Puedes agregar métodos personalizados más adelante si es necesario
 }

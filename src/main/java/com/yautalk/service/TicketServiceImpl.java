@@ -31,4 +31,9 @@ public class TicketServiceImpl implements TicketService {
         return ticketRepository.findByCliente(cliente);
     }
 
+    @Override
+    public List<Ticket> obtenerTicketsPendientes() {
+        return ticketRepository.findByEstado("Pendiente"); // o el estado que decidas
+    }
+
 }

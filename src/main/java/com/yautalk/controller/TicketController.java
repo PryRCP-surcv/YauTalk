@@ -41,8 +41,8 @@ public class TicketController {
 
     @PostMapping("/crear-ticket")
     public String procesarFormularioTicket(@ModelAttribute("ticket") Ticket ticket,
-            @RequestParam("archivo") MultipartFile archivo,
-            RedirectAttributes redirectAttributes) {
+                                           @RequestParam("archivo") MultipartFile archivo,
+                                           RedirectAttributes redirectAttributes) {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         Usuario usuario = (Usuario) auth.getPrincipal();
@@ -51,10 +51,19 @@ public class TicketController {
         ticket.setFechaCreacion(LocalDate.now());
         ticket.setEstado("Pendiente");
 
+        // Convertimos cadena vacía en null para categoría y prioridad si es necesario
+        if (ticket.getCategoria() != null && ticket.getCategoria().isBlank()) {
+            ticket.setCategoria(null);
+        }
+        if (ticket.getPrioridad() != null && ticket.getPrioridad().isBlank()) {
+            ticket.setPrioridad(null);
+        }
+
+        // Guardar archivo en carpeta 'uploads' fuera de /static
         if (!archivo.isEmpty()) {
             try {
                 String nombreArchivo = archivo.getOriginalFilename();
-                String rutaDirectorio = new File("src/main/resources/static/uploads").getAbsolutePath();
+                String rutaDirectorio = new File("uploads").getAbsolutePath(); // ✅ Carpeta raíz
                 File directorio = new File(rutaDirectorio);
                 if (!directorio.exists()) {
                     directorio.mkdirs();
@@ -68,7 +77,7 @@ public class TicketController {
             }
         }
 
-        // LOG de verificación ANTES de guardar
+        // Log de depuración
         logger.info("DATOS DEL TICKET >>>");
         logger.info("Título: " + ticket.getTitulo());
         logger.info("Descripción: " + ticket.getDescripcion());
@@ -92,5 +101,4 @@ public class TicketController {
 
         return "mis-tickets";
     }
-
 }

@@ -10,4 +10,7 @@ public interface TicketService {
     List<Ticket> listarTicketsPorCliente(Long idCliente); // para futuras fases
     List<Ticket> obtenerTicketsPorCliente(Usuario cliente);
 
+    List<Ticket> obtenerTicketsPendientes(); // Método nuevo
+
+
 }
